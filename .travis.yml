@@ -15,14 +15,14 @@ addons:
       - g++-4.8
 
 
-    coverity_scan:
-      project:
-        name: "solidSnek/TESTTravis"
-        description: "Build submitted via Travis CI of application"
-      notification_email: metaknighttu@gmail.com
-      build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
-      build_command:   "make VERBOSE=1"
-      branch_pattern: coverity_scan
+#    coverity_scan:
+#      project:
+#        name: "solidSnek/TESTTravis"
+##        description: "Build submitted via Travis CI of application"
+#      notification_email: metaknighttu@gmail.com
+#     build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
+#     build_command:   "make VERBOSE=1"
+#     branch_pattern: coverity_scan
 
 before_install:
   # repo for Qt
@@ -32,6 +32,7 @@ before_install:
 install:
   - sudo apt-get --yes install qt55base qt55imageformats qt55svg
   - sudo apt-get --yes install sqlite3 
+  - sudo apt-get --yes upgrade
   - export CXX="g++-4.8"
   - export CC="gcc-4.8"
 
