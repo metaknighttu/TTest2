@@ -7,7 +7,7 @@ class MemberBook : public QObject
 {
     Q_OBJECT
 public:
-    explicit MemberBook(QObject *parent = nullptr);
+    explicit MemberBook(QObject *parent = NULL);
 
 signals:
 

@@ -7,7 +7,7 @@ class RecordBook : public QObject
 {
     Q_OBJECT
 public:
-    explicit RecordBook(QObject *parent = nullptr);
+    explicit RecordBook(QObject *parent = NULL);
 
 signals:
 

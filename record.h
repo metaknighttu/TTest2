@@ -9,7 +9,7 @@ class Record : public QObject
 {
     Q_OBJECT
 public:
-    explicit Record(QObject *parent = nullptr);
+    explicit Record(QObject *parent = NULL);
 
 
     int id() const;

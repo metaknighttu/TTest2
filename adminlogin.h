@@ -12,7 +12,7 @@ class adminLogin : public QDialog
     Q_OBJECT
 
 public:
-    explicit adminLogin(QWidget *parent = nullptr);
+    explicit adminLogin(QWidget *parent = NULL);
     ~adminLogin();
 
 private:

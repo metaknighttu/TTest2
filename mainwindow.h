@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(Controller *controller, QWidget *parent = nullptr);
+    MainWindow(Controller *controller, QWidget *parent = NULL);
     ~MainWindow();
 
 
@@ -34,9 +34,6 @@ private slots:
     void changeToManager();
 
     void on_viewItems_clicked();
-
-protected:
-    void keyPressEvent(QKeyEvent* pe);
 
 private:
     Ui::MainWindow *ui;

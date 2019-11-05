@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 
 #include <QMessageBox>
-#include <QPixmap>
 
 MainWindow::MainWindow(Controller *controller, QWidget *parent)
     : QMainWindow(parent)
@@ -11,10 +10,6 @@ MainWindow::MainWindow(Controller *controller, QWidget *parent)
 {
     ui->setupUi(this);
     ui->stackedWidget->setCurrentWidget(ui->MAINWINDOW);
-    QPixmap pix("/Users/littlejimmyfirl/Desktop/bulkClub/Logo.png");
-    int w = ui ->logo->width();
-    int h = ui ->logo->height();
-    ui->logo->setPixmap(pix.scaled(w,h,Qt::KeepAspectRatio));
 }
 
 
@@ -28,11 +23,6 @@ void MainWindow::on_pushButton_2_clicked()
 {
     this->ui->username->setText("");
     this->ui->password->setText("");
-}
-
-void MainWindow::keyPressEvent(QKeyEvent* pe)
-{
-    if(pe->key()== Qt::Key_Return) on_pushButton_clicked();
 }
 
 void MainWindow::on_pushButton_clicked()

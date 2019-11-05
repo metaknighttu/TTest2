@@ -12,7 +12,7 @@ class managerLogin : public QDialog
     Q_OBJECT
 
 public:
-    explicit managerLogin(QWidget *parent = nullptr);
+    explicit managerLogin(QWidget *parent = NULL);
     ~managerLogin();
 
 private:

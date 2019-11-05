@@ -9,7 +9,7 @@ class Member : public QObject
 {
     Q_OBJECT
 public:
-    explicit Member(QObject *parent = nullptr);
+    explicit Member(QObject *parent = NULL);
 
     /* Getter and Setter for m_id */
     int id() const;

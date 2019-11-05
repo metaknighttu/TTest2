@@ -8,7 +8,7 @@ class Admin : public QObject
 {
     Q_OBJECT
 public:
-    explicit Admin(QObject *parent = nullptr);
+    explicit Admin(QObject *parent = NULL);
 
     QString username() const;
     void setUsername(const QString &username);

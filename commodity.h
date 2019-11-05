@@ -8,7 +8,7 @@ class Commodity : public QObject
 {
     Q_OBJECT
 public:
-    explicit Commodity(QObject *parent = nullptr);
+    explicit Commodity(QObject *parent = NULL);
 
 
     QString item() const;
