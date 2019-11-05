@@ -19,6 +19,9 @@ public:
     explicit Controller(QObject *parent = NULL);
 
     Controller(Controller& controller);
+
+    Controller();
+
     ~Controller();
 
     void createTable();
