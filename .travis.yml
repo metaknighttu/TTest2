@@ -1,5 +1,5 @@
 language: cpp
-matrix:
+#matrix:
   include:
     - os: osx
     osx_image: xcode7.4
