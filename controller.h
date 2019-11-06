@@ -20,7 +20,7 @@ public:
 
     Controller(Controller& controller);
 
-    Controller();
+ //   Controller();
 
     ~Controller();
 
