@@ -1,63 +1,23 @@
 language: cpp
-os: linux
-compiler: 
-  - gcc
-  - clang
-
-sudo: required
-dist: trusty
-
-
-addons:
-  apt:
-    packages:
-      - cmake
-      - g++-4.8
-
-
-#    coverity_scan:
-#      project:
-#        name: "solidSnek/TESTTravis"
-##        description: "Build submitted via Travis CI of application"
-#      notification_email: metaknighttu@gmail.com
-     build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
-     build_command:   "make VERBOSE=1"
-#     branch_pattern: coverity_scan
-
-before_install:
-  # repo for Qt
-  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-  - sudo apt-get -qq update
-
-install:
-  - sudo apt-get --yes install qt55base qt55imageformats qt55svg
-  - sudo apt-get --yes install sqlite3 
-  - sudo apt-get --yes install cmake
-  - sudo apt-get --yes install g++
-  - export CXX="g++-4.8"
-  - export CC="gcc-4.8"
-
-before_script:
-  # Qt variables
-  - QTDIR="/opt/qt55"
-  - PATH="$QTDIR/bin:$PATH"
-  - source /opt/qt55/bin/qt55-env.sh
-
-
-  # cmake build of the project
-#  - cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=/opt/qt55/lib/cmake 
-
-
-script:
-  - if [[ "${COVERITY_SCAN_BRANCH}" == 1 ]];
-      then
-        echo "Don't build on coverty_scan branch.";
-        exit 0;
-    fi
-
-
-  - sudo qmake bulkClub.pro
-
-  - sudo make
-
-
+matrix:
+  include:
+    - os: osx
+    osx_image: xcode7.4
+    before_install:
+    - brew install qt5
+    - brew link qt5 --force
+    script:
+    - qmake -spec macx-xcode bulkClub.pro
+    - xcodebuild -list -project bulkClub.xcodeproj
+    - xcodebuild -scheme bulkClub build
+    #ssh-key & deploy function is only available in travis-ci.com (not free) but not in travis-ci.org (free)
+    #deploy:
+    #  provider: releases
+    #  api_key:
+    #    secure: aQ93/8XU3HEGTif0/rSiF+gcm4uRhyWFdr3Va50BprwQOrZkNg8zIMwIKKODwjLDqxaH4msgNYutcr/VLdLjo4YP43It0UIfv3LGa2VFAkFhuQurMXZlVyx8RhIGLjIaWVWN1GCbNdAQwWNNo2mAkEdRaBrj/26geZotGcYZiztGwTAdy0t/vyYjO1sLZdBKcf7dJ06Pm2ktZO/rDyE4UtCTQiRfqLCKsQ/SILbewOMG/auaSUdU0utsbvXxr+dCzqBPwdSSptWqhIORXORL5oPn6242URzIJkmw5XPwhSabhdbzUjCIN9E24z1vp+cffAohuGXyXXZy9/bGeKa0mXfAaXV+TnJkpMd+i3fN5dY+vhFrlLOpRojRK6NqvaMID6tcNNtZMmFSgaZGyCUJQn4/0X+LdPwvK3/dXY+qElJW62QiJmQAt9OBGcq8EFqQDmEtRivRlbpbERsd/IJoOxP7nI2T00g04uV543ZmhU4fmGw6MVPAlIGRsBECjB0AMTp+3xW3OaUp7jy3WZpZXRrXNI41nZogrxhevPME1BRNk3V+MWQo8R3C+bIaCa5Um/3DZxnMxZgXjI9yzzR7Z8f4RWaQCKjXx41/pk7jxm1TcEyBfRVsb313l/fRLg+fjCmaEnnxu43333XGIv4eIyAGDR8ydF2VpmyP2ejzh8I=
+    #  file:
+    #  - Jamulus.app
+    #  skip_cleanup: true
+    #  on:
+    #    repo: braindef/jamulus
+    #    tags: true
