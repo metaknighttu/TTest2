@@ -1,27 +1,16 @@
 language: cpp
+os: osx
 compiler:
     - gcc
     - clang
-#matrix:
-#  include:
-os: osx
+
 osx_image: xcode7.4
-    before_install:
-    - brew install qt5
-    - brew link qt5 --force
+before_install:
+- brew install qt5
+- brew link qt5 --force
     
-    script:
-    - qmake -spec macx-xcode bulkClub.pro
-    - xcodebuild -list -project bulkClub.xcodeproj
-    - xcodebuild -scheme bulkClub build
-    #ssh-key & deploy function is only available in travis-ci.com (not free) but not in travis-ci.org (free)
-    #deploy:
-    #  provider: releases
-    #  api_key:
-    #    secure: aQ93/8XU3HEGTif0/rSiF+gcm4uRhyWFdr3Va50BprwQOrZkNg8zIMwIKKODwjLDqxaH4msgNYutcr/VLdLjo4YP43It0UIfv3LGa2VFAkFhuQurMXZlVyx8RhIGLjIaWVWN1GCbNdAQwWNNo2mAkEdRaBrj/26geZotGcYZiztGwTAdy0t/vyYjO1sLZdBKcf7dJ06Pm2ktZO/rDyE4UtCTQiRfqLCKsQ/SILbewOMG/auaSUdU0utsbvXxr+dCzqBPwdSSptWqhIORXORL5oPn6242URzIJkmw5XPwhSabhdbzUjCIN9E24z1vp+cffAohuGXyXXZy9/bGeKa0mXfAaXV+TnJkpMd+i3fN5dY+vhFrlLOpRojRK6NqvaMID6tcNNtZMmFSgaZGyCUJQn4/0X+LdPwvK3/dXY+qElJW62QiJmQAt9OBGcq8EFqQDmEtRivRlbpbERsd/IJoOxP7nI2T00g04uV543ZmhU4fmGw6MVPAlIGRsBECjB0AMTp+3xW3OaUp7jy3WZpZXRrXNI41nZogrxhevPME1BRNk3V+MWQo8R3C+bIaCa5Um/3DZxnMxZgXjI9yzzR7Z8f4RWaQCKjXx41/pk7jxm1TcEyBfRVsb313l/fRLg+fjCmaEnnxu43333XGIv4eIyAGDR8ydF2VpmyP2ejzh8I=
-    #  file:
-    #  - Jamulus.app
-    #  skip_cleanup: true
-    #  on:
-    #    repo: braindef/jamulus
-    #    tags: true
+script:
+- qmake -spec macx-xcode bulkClub.pro
+- xcodebuild -list -project bulkClub.xcodeproj
+- xcodebuild -scheme bulkClub build
+  
