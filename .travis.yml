@@ -20,8 +20,8 @@ addons:
 #        name: "solidSnek/TESTTravis"
 ##        description: "Build submitted via Travis CI of application"
 #      notification_email: metaknighttu@gmail.com
-#     build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
-#     build_command:   "make VERBOSE=1"
+     build_command_prepend: "cov-configure --comptype gcc --compiler gcc-4.8"
+     build_command:   "make VERBOSE=1"
 #     branch_pattern: coverity_scan
 
 before_install:
